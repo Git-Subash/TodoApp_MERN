@@ -35,9 +35,8 @@ import {motion} from 'framer-motion'
 
     
   return (
-    <motion.main initial={{ opacity: 0, y:200 }}
-    animate={{opacity: 1, y:0}}
-    transition={{ delay: 0.2,  duration: 2, ease: [0, 0.71, 0.5, 1.01] }}  className='flex justify-center h-[490px]  mt-28 rounded-sm   overflow-hidden ' > 
+    <main 
+  className='flex justify-center h-[490px]  mt-28 rounded-sm   overflow-hidden ' > 
   <Card  className='backdrop-blur-sm rounded-lg bg-white/30 p-4 w-[500px] ' shadow={false}>
     <form onSubmit={Update} >
     <Typography variant="h2" className="tracking-wide  flex   justify-center font-wal"  color="purple" >UPDATE LIST</Typography>
@@ -59,6 +58,6 @@ import {motion} from 'framer-motion'
     </form>
     </Card>
 
-    </motion.main>
+    </main>
   )
 }

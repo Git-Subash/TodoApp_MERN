@@ -27,13 +27,9 @@ import {motion} from 'framer-motion'
     }).catch(err => console.log(err))
      }
 
- 
-     
- 
+
   return (
-    <motion.main  initial={{ opacity: 0, y:200 }}
-    animate={{opacity: 1, y:0}}
-    transition={{ delay: 0.2,  duration: 2, ease: [0, 0.71, 0.5, 1.01] }}  className='flex justify-center  font-pop h-[490px] mt-28  rounded-sm  overflow-hidden ' > 
+    <main  className='flex justify-center  font-pop h-[490px] mt-28  rounded-sm  overflow-hidden ' > 
   <Card  className='backdrop-blur-sm rounded-lg bg-white/30 p-4 w-[500px] ' shadow={false} >
     <form onSubmit={Submit} > 
       <Typography variant="h2" className="tracking-wide  flex   justify-center font-wal"  color="purple" >CREATE LIST</Typography>
@@ -58,6 +54,6 @@ import {motion} from 'framer-motion'
     </form>
     </Card>
 
-    </motion.main>
+    </main>
   )
 }
