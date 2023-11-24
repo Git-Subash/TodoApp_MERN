@@ -1,8 +1,15 @@
-import React  from 'react'
 import {Link } from 'react-router-dom'
-import {Minus,ClipboardEdit,   } from 'lucide-react'
+import {Check ,ClipboardEdit, X  } from 'lucide-react'
 import { useState ,  useEffect } from 'react'
+import {IconButton , Typography ,Button} from "@material-tailwind/react";
 import axios from 'axios'
+import * as React from 'react'
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
+import {motion} from 'framer-motion'
+import Tooltip from '@mui/material/Tooltip';
+import Fade from '@mui/material/Fade';
 
 
 
@@ -14,9 +21,15 @@ function getDate () {
   return `${date}/${month}/${year}`;
 }
 
-export const List = () => {
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
+export const List = () => {
   const [todos ,setTodos] = useState([])
+  const [complete, setComplete] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
+
 
   useEffect( () => {
     axios.get('http://localhost:3000')
@@ -27,49 +40,111 @@ export const List = () => {
  const handleDelete = (id) => {
     axios.delete('http://localhost:3000/deleteTodo/'+id)
    
-    .then( res =>{ 
+    .then(res =>{ 
       console.log(res)
-      window.location.reload()
+      setOpen(true);
+  
     })
-    .catch(err => console.log(err))
-     
+    .catch(err => console.log(err))   
+ }
+ const handleComplete = (id) => {
+  axios.delete('http://localhost:3000/deleteTodo/'+id)
+   
+  .then(res =>{ 
+    console.log(res)
+    setComplete(true);
+    
+    
+
+  })
+  .catch(err => console.log(err)) 
  }
 
-  return (
-    <main >
-    <div className=' w-full mt-20 flex align-middle justify-center  '>
-    <Link to='/Create' className=' flex text-[#3d3b3b] bg-[#f8d4f8bb]  font-serif capitalize font-bold tracking-wider rounded-md  py-4  text-5xl px-24 text-center' >Todo App <span className=' text-4xl'>+</span></Link> 
+ const handleClose = (event, reason) => {
+   if (reason === 'clickaway') {
+     return;
+   }
+   setComplete(false);
+   setOpen(false);
+   window.location.reload()
+ };
 
-    </div>
-    <div className=' h-[490px] mt-8    rounded-md  overflow-x-hidden'>
+
+  return (
+    <main>
+       <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Click and add new task" arrow  >
+    <motion.div  
+    animate={{ scale: [0,1] }}
+    transition={{ times: [0, 0.1, 0.9, 1] ,
+      duration: 1,
+      delay: 0,
+      // ease: [0, 0.71, 0.5, 1.01]
+    }}      
+     className=' w-full mt-10 flex flex-wrap align-middle justify-center   '>
+
+    <Typography variant='h1' color='purple'>  <Link to='/Create' className=' flex   backdrop-blur-sm bg-white/30 capitalize font-bold tracking-wider rounded-md  py-4  px-24 text-center' >Todo App <span className=' text-4xl'>+</span></Link> </Typography>  
+
+    </motion.div>
+    </Tooltip>
+    <div className=' h-[520px] pt-8 rounded-lg md:flex flex-wrap gap-8  justify-center   pl-2   bg-fixed  overflow-x-hidden scroll-smooth'>
    
 
        {/* Card */}
     { todos.map((todo) => (
 
-     <div className='flex justify-center  '>
-      <div className=' rounded-none mb-4  border-slate-500'>
-      <div className='bg-[#fefe] py-8 text-[#000000c8]  '>
+     <div className='flex flex-wrap  justify-center   '>
+      <div className=' rounded-none mb-4   border-slate-500  '>
+
+      <motion.div initial={{ opacity: 0, y:400,scale:1.5 }}
+    animate={{ opacity: 1, scale: 1 , y:0 }}
+    transition={{
+      duration: .5,
+      delay: 0.2,
+      // easein: [0, 0.71, 0.5, 1.01]
+    }}  className=' py-8 rounded-lg backdrop-blur-sm bg-white/30 text-[#000000c8]  '>
        <div className='flex justify-between'>
-       <h2 className='pb-8 pl-8 text-lg font-pop font-extrabold tracking-wide '>{todo.title}</h2>
-       <button onClick={(e) => handleDelete(todo._id)} className=' pr-8 pb-10 '> <Minus  /></button> 
+       <Typography className='pb-8  pl-8 text-lg font-pop font-extrabold tracking-wide capitalize ' color='purple'>{todo.title}</Typography>
+      
+       <Stack className=''>
+       <div >
+       <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }}  title="Complete" arrow placement='bottom-start' >
+       <motion.button  whileHover={{ scale: 1.2 }}  className=' mr-4   text-green-600 'onClick={(e) => handleComplete(todo._id)}><Check /> </motion.button> </Tooltip>
+       <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Delete" arrow placement='bottom-start' >
+       <motion.button whileHover={{ scale: 1.2 }} 
+  className=' mr-6 px-1  text-red-600  ' onClick={(e) => handleDelete(todo._id)} ><X /></motion.button> </Tooltip>
+     
+  
+      </div>
+       </Stack>
+   
+     
        </div>
        <p className='pb-8 pl-8  text-md font-pop w-[450px] text-left'>{todo.task}</p>
        <div className='flex justify-between pr-8'>
        <h6  className='pl-8 pt-2  text-xs font-pop'>{getDate()}</h6>
-       <Link to={`/Modify/${todo._id}`}> <ClipboardEdit /></Link>
+       <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Update" arrow placement='bottom-start' >
+    <IconButton 
+ color='purple' > <Link to={`/Modify/${todo._id}`}> <ClipboardEdit /> </Link> </IconButton></Tooltip>
        </div>
-      </div>
+      </motion.div>
       </div>
       </div>
     ))
 }
- 
+<Snackbar open={complete} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+        Task Completed!
+        </Alert>
+      </Snackbar>
 
-
-
-   
+      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          Task deleted successfully!
+        </Alert>
+      </Snackbar>
     </div>
     </main>
   )
 }
+
+

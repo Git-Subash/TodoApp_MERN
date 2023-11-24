@@ -1,12 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 import defaultTheme from 'tailwindcss/defaultTheme'
+import withMT from "@material-tailwind/react/utils/withMT"
 
-export default {
+module.exports = withMT( {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}',
+    "path-to-your-node_modules/@material-tailwind/react/components/**/*.{js,ts,jsx,tsx}",
+    "path-to-your-node_modules/@material-tailwind/react/theme/components/**/*.{js,ts,jsx,tsx}",
   ],
+
   theme: {
     screens:{
      
@@ -25,8 +28,7 @@ export default {
         'wal':['GT Walsheim Pro Bold Regular']
       },},
   },
-  plugins: [
-    require('flowbite/plugin')
-  ],
-}
+  plugins: [],
+
+});
 
