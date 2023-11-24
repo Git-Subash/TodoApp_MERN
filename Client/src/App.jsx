@@ -5,6 +5,7 @@ import {Create} from './components/page/Create'
 import { Route,Routes } from 'react-router-dom';
 import bg from './assets/bg1.jpg'
 
+
 const App = () => {
   
   return (
