@@ -15,7 +15,7 @@ import {useNavigate} from 'react-router-dom'
     const Submit =  (e) => {
      
       e.preventDefault();
-       axios.post("http://localhost:3000/CreateTodo",{title ,task})
+       axios.post("https://cosmic-lollipop-ad4b8b.netlify.app/CreateTodo",{title ,task})
        navigate('/')
        .then(result => {
         console.log(result)

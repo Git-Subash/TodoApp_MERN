@@ -32,14 +32,14 @@ export const List = () => {
 
 
   useEffect( () => {
-    axios.get('http://localhost:3000')
+    axios.get('https://cosmic-lollipop-ad4b8b.netlify.app/')
     .then( result => setTodos(result.data) )
     .catch(err => console.log(err))
   },[])
   
  const handleDelete = (id) => {
 
-    axios.delete('http://localhost:3000/deleteTodo/'+id)
+    axios.delete('https://cosmic-lollipop-ad4b8b.netlify.app/deleteTodo/'+id)
     .then(res =>{ 
       console.log(res)
       setOpen(true);
@@ -48,7 +48,7 @@ export const List = () => {
     .catch(err => console.log(err))   
  }
  const handleComplete = (id) => {
-  axios.delete('http://localhost:3000/deleteTodo/'+id)
+  axios.delete('https://cosmic-lollipop-ad4b8b.netlify.app/deleteTodo/'+id)
    
   .then(res =>{ 
     console.log(res)
