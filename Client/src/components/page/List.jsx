@@ -32,14 +32,14 @@ export const List = () => {
 
 
   useEffect( () => {
-    axios.get('https://cosmic-lollipop-ad4b8b.netlify.app/')
+    axios.get('http://localhost:3000')
     .then( result => setTodos(result.data) )
     .catch(err => console.log(err))
   },[])
   
  const handleDelete = (id) => {
 
-    axios.delete('https://cosmic-lollipop-ad4b8b.netlify.app/deleteTodo/'+id)
+    axios.delete('http://localhost:3000/deleteTodo/'+id)
     .then(res =>{ 
       console.log(res)
       setOpen(true);
@@ -48,7 +48,7 @@ export const List = () => {
     .catch(err => console.log(err))   
  }
  const handleComplete = (id) => {
-  axios.delete('https://cosmic-lollipop-ad4b8b.netlify.app/deleteTodo/'+id)
+  axios.delete('http://localhost:3000/deleteTodo/'+id)
    
   .then(res =>{ 
     console.log(res)
@@ -131,13 +131,13 @@ export const List = () => {
       </div>
     ))
 }
-<Snackbar open={complete} autoHideDuration={2000} onClose={handleClose}>
+<Snackbar open={complete} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
         Task Completed!
         </Alert>
       </Snackbar>
 
-      <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
           Task deleted successfully!
         </Alert>

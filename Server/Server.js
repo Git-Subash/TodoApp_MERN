@@ -60,7 +60,7 @@ app.delete('/deleteTodo/:id' ,(req,res) => {
 
 
 
-app.listen(/cosmic-lollipop-ad4b8b.netlify.app/ , ()=> {
+app.listen(Port, ()=> {
     console.log(`currently running is port https://localhost:${Port}`)
 })
 

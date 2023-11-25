@@ -15,7 +15,7 @@ import axios from 'axios'
 
      useEffect(() => {
       
-      axios.get("https://cosmic-lollipop-ad4b8b.netlify.app/getTodo/"+id)
+      axios.get("http://localhost:3000/getTodo/"+id)
       .then(result =>{ 
         console.log(result)
         setTitle( result.data.title)
@@ -27,7 +27,7 @@ import axios from 'axios'
 
      const Update = (e) =>{
       e.preventDefault();
-      axios.put("https://cosmic-lollipop-ad4b8b.netlify.app/UpdateTodo/"+id,{title ,task})
+      axios.put("http://localhost:3000/UpdateTodo/"+id,{title ,task})
       navigate('/')
       .then(result => console.log(result)) 
       .catch(err => console.log(err))
