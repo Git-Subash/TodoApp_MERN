@@ -1,9 +1,9 @@
+import * as React from 'react'
 import {Link } from 'react-router-dom'
 import {Check ,ClipboardEdit, X  } from 'lucide-react'
 import { useState ,  useEffect } from 'react'
-import {IconButton , Typography ,Button} from "@material-tailwind/react";
+import {IconButton , Typography } from "@material-tailwind/react";
 import axios from 'axios'
-import * as React from 'react'
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 import Stack from '@mui/material/Stack';
@@ -38,8 +38,8 @@ export const List = () => {
   },[])
   
  const handleDelete = (id) => {
+
     axios.delete('http://localhost:3000/deleteTodo/'+id)
-   
     .then(res =>{ 
       console.log(res)
       setOpen(true);
@@ -75,9 +75,9 @@ export const List = () => {
        <Tooltip TransitionComponent={Fade} TransitionProps={{ timeout: 600 }} title="Click and add new task" arrow  >
     <motion.div  
     animate={{ scale: [0,1] }}
-    transition={{ times: [0, 0.1, 0.9, 1] ,
+    transition={{ times: [0, 1] ,
       duration: 1,
-      delay: 0,
+      delay: 0.2,
       // ease: [0, 0.71, 0.5, 1.01]
     }}      
      className=' w-full mt-10 flex flex-wrap align-middle justify-center   '>

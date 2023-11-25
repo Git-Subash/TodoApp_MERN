@@ -5,12 +5,12 @@ import 'dotenv/config';
 
 
 const app = express();
-const port = process.env.PORT || 3000;
-
+const Port = process.env.PORT;
+const DataBase = process.env.DATA_BASE
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb://127.0.0.1:27017/todoApp")
+mongoose.connect(DataBase)
 
 const  TodoSchema = new mongoose.Schema({
   title : String,
@@ -60,8 +60,8 @@ app.delete('/deleteTodo/:id' ,(req,res) => {
 
 
 
-app.listen(port , ()=> {
-    console.log(`currently running is port https://localhost:${port}`)
+app.listen(Port , ()=> {
+    console.log(`currently running is port https://localhost:${Port}`)
 })
 
 

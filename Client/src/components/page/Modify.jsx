@@ -5,7 +5,7 @@ import {useParams} from 'react-router-dom'
 import {useNavigate} from 'react-router-dom'
 import { useEffect ,useState } from 'react'
 import axios from 'axios'
-import {motion} from 'framer-motion'
+
 
  export const Modify = () => {
      const {id} = useParams()
@@ -14,8 +14,8 @@ import {motion} from 'framer-motion'
      const navigate =useNavigate()
 
      useEffect(() => {
+      
       axios.get("http://localhost:3000/getTodo/"+id)
-   
       .then(result =>{ 
         console.log(result)
         setTitle( result.data.title)

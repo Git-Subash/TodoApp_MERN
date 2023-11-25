@@ -4,9 +4,6 @@ import  { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
-import {motion} from 'framer-motion'
-
-
 
 
 
@@ -15,10 +12,8 @@ import {motion} from 'framer-motion'
      const [task ,setTask] = useState()
      const  navigate = useNavigate()
 
-
-  
     const Submit =  (e) => {
-
+     
       e.preventDefault();
        axios.post("http://localhost:3000/CreateTodo",{title ,task})
        navigate('/')
