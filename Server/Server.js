@@ -23,6 +23,10 @@ const TodoSchema = new mongoose.Schema({
 
 const todoModel = mongoose.model("todolist", TodoSchema);
 
+app.get("", (req, res) => {
+  res.json("hello");
+});
+
 app.get("/", (req, res) => {
   todoModel
     .find({})
