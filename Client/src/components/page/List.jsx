@@ -30,14 +30,14 @@ export const List = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000")
+      .get("https://todo-app-mern-sage.vercel.app/")
       .then((result) => setTodos(result.data))
       .catch((err) => console.log(err));
   }, []);
 
   const handleDelete = (id) => {
     axios
-      .delete("http://localhost:3000/deleteTodo/" + id)
+      .delete("https://todo-app-mern-sage.vercel.app/deleteTodo/" + id)
       .then((res) => {
         console.log(res);
         setOpen(true);
@@ -46,7 +46,7 @@ export const List = () => {
   };
   const handleComplete = (id) => {
     axios
-      .delete("http://localhost:3000/deleteTodo/" + id)
+      .delete("https://todo-app-mern-sage.vercel.app/deleteTodo/" + id)
 
       .then((res) => {
         console.log(res);

@@ -9,7 +9,9 @@ const DataBase = process.env.DATA_BASE;
 
 app.use(
   cors({
-    origin: [],
+    origin: ["https://todo-app-mern-sage.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
   })
 );
 app.use(express.json());
