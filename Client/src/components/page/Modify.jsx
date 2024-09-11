@@ -20,7 +20,7 @@ export const Modify = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.BACKEND_URL}/getTodo/` + id)
+      .get("https://todo-server-sage.vercel.app/getTodo/" + id)
       .then((result) => {
         console.log(result);
         setTitle(result.data.title);
@@ -32,7 +32,7 @@ export const Modify = () => {
 
   const Update = (e) => {
     e.preventDefault();
-    axios.put(`${import.meta.env.BACKEND_URL}/UpdateTodo/` + id, {
+    axios.put("https://todo-server-sage.vercel.app/UpdateTodo/" + id, {
       title,
       task,
     });

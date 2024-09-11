@@ -30,7 +30,7 @@ export const List = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.BACKEND_URL}`)
+      .get("https://todo-server-sage.vercel.app")
       .then((result) => {
         const todosData = Array.isArray(result.data)
           ? result.data
@@ -42,7 +42,7 @@ export const List = () => {
   console.log(todos);
   const handleDelete = (id) => {
     axios
-      .delete(`${import.meta.env.BACKEND_URL}/deleteTodo/` + id)
+      .delete("https://todo-server-sage.vercel.app/deleteTodo/" + id)
       .then((res) => {
         console.log(res);
         setOpen(true);
@@ -51,7 +51,7 @@ export const List = () => {
   };
   const handleComplete = (id) => {
     axios
-      .delete(`${import.meta.env.BACKEND_URL}/deleteTodo/` + id)
+      .delete("https://todo-server-sage.vercel.app/deleteTodo/" + id)
 
       .then((res) => {
         console.log(res);
