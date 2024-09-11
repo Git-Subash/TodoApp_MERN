@@ -9,8 +9,7 @@ const DataBase = process.env.DATA_BASE;
 
 app.use(
   cors({
-    origin:
-      "https://todo-app-mern-client-gxup5ycdg-subash-ms-projects.vercel.app", // Remove trailing slash
+    origin: "https://todo-app-mern-client-six.vercel.app", // Remove trailing slash
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
