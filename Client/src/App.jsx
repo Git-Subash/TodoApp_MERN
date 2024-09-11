@@ -11,17 +11,10 @@ const App = () => {
     <div
       className=" text-white min-h-screen overflow-hidden  bg-no-repeat bg-cover bg-left-bottom "
       style={{ backgroundImage: `url(${bg})` }}>
-      {/* <Navbar /> */}
       <Routes>
-        <Route path="/" element={<List />}>
-          {" "}
-        </Route>
-        <Route path="/Create" element={<Create />}>
-          {" "}
-        </Route>
-        <Route path="/Modify/:id" element={<Modify />}>
-          {" "}
-        </Route>
+        <Route path="/" element={<List />}></Route>
+        <Route path="/Create" element={<Create />}></Route>
+        <Route path="/Modify/:id" element={<Modify />}></Route>
       </Routes>
     </div>
   );

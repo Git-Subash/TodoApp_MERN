@@ -7,13 +7,14 @@ const app = express();
 const Port = process.env.PORT;
 const DataBase = process.env.DATA_BASE;
 
-app.use(
-  cors({
-    origin: ["https://todo-app-mern-client-seven.vercel.app/"],
-    methods: ["POST", "GET"],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: ["https://todo-app-mern-client-seven.vercel.app/"],
+//     methods: ["POST", "GET"],
+//     credentials: true,
+//   })
+// );
+app.use(cors());
 app.use(express.json());
 
 mongoose.connect(DataBase);
@@ -25,7 +26,7 @@ const TodoSchema = new mongoose.Schema({
 
 const todoModel = mongoose.model("todolist", TodoSchema);
 
-app.get("", (req, res) => {
+app.get("/working", (req, res) => {
   res.json("hello");
 });
 
