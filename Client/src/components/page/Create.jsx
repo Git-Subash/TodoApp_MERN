@@ -18,7 +18,7 @@ export const Create = () => {
 
   const Submit = (e) => {
     e.preventDefault();
-    axios.post("https://todo-app-mern-sage.vercel.app//CreateTodo", {
+    axios.post(`${import.meta.env.BACKEND_URL}/CreateTodo`, {
       title,
       task,
     });
