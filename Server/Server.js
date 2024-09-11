@@ -15,6 +15,7 @@ const DataBase = process.env.DATA_BASE;
 //   })
 // );
 app.use(cors());
+
 app.use(express.json());
 
 mongoose.connect(DataBase);
