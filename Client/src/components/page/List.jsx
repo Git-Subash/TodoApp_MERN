@@ -30,8 +30,7 @@ export const List = () => {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.BACKEND_URL}/`)
-      // .then((result) => setTodos(result.data))
+      .get(`${import.meta.env.BACKEND_URL}`)
       .then((result) => {
         const todosData = Array.isArray(result.data)
           ? result.data
