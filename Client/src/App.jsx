@@ -4,7 +4,6 @@ import { Modify } from "./components/page/Modify";
 import { Create } from "./components/page/Create";
 import { Route, Routes } from "react-router-dom";
 import bg from "./assets/bg1.jpg";
-// import  Navbar  from './components/Navbar';
 
 const App = () => {
   return (
