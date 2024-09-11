@@ -5,11 +5,12 @@ import "dotenv/config";
 
 const app = express();
 const Port = process.env.PORT;
-const DataBase = "mongodb://127.0.0.1:27017/todoApp";
+const DataBase = process.env.DATA_BASE;
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Remove trailing slash
+    origin:
+      "https://todo-app-mern-client-gxup5ycdg-subash-ms-projects.vercel.app", // Remove trailing slash
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
