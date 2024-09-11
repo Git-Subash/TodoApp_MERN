@@ -7,14 +7,13 @@ const app = express();
 const Port = process.env.PORT;
 const DataBase = process.env.DATA_BASE;
 
-// app.use(
-//   cors({
-//     origin: ["https://todo-app-mern-client-seven.vercel.app/"],
-//     methods: ["POST", "GET"],
-//     credentials: true,
-//   })
-// );
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://todo-app-mern-client-seven.vercel.app/"],
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 
