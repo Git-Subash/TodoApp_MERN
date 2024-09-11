@@ -5,12 +5,12 @@ import "dotenv/config";
 
 const app = express();
 const Port = process.env.PORT;
-const DataBase = process.env.DATA_BASE;
+const DataBase = "mongodb://127.0.0.1:27017/todoApp";
 
 app.use(
   cors({
     origin: "http://localhost:5173", // Remove trailing slash
-    methods: ["POST", "GET"],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
