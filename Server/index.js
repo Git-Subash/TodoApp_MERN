@@ -9,7 +9,7 @@ const DataBase = process.env.DATA_BASE;
 
 app.use(
   cors({
-    origin: ["https://todo-app-mern-client-six.vercel.app"],
+    origin: ["http://localhost:5173/"],
     methods: ["POST", "GET"],
     credentials: true,
   })
