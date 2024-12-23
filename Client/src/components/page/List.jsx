@@ -11,6 +11,8 @@ import { motion } from "framer-motion";
 import Tooltip from "@mui/material/Tooltip";
 import Fade from "@mui/material/Fade";
 
+
+
 function getDate() {
   const today = new Date();
   const month = today.getMonth() + 1;
@@ -97,81 +99,80 @@ export const List = () => {
       </Tooltip>
       <div className=" h-screen  mt-10 pt-8 rounded-lg md:flex md:flex-wrap gap-x-8  md:justify-center   pl-2   bg-fixed  overflow-x-hidden scroll-smooth">
         {/* Card */}
-        {Array.isArray(todos) &&
-          todos.map((todo) => (
-            <div className="flex flex-wrap  justify-center   ">
-              <div className=" rounded-none mb-4   border-slate-500  ">
-                <motion.div
-                  initial={{ opacity: 0, y: 400, scale: 1.5 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: 0.2,
-                    // easein: [0, 0.71, 0.5, 1.01]
-                  }}
-                  className=" py-8 rounded-lg backdrop-blur-sm bg-white/30 text-[#000000c8]  ">
-                  <div className="flex justify-between">
-                    <Typography
-                      className="pb-8  pl-8 text-lg font-pop font-extrabold tracking-wide capitalize "
-                      color="purple">
-                      {todo.title}
-                    </Typography>
+        {Todos.map((todo) => (
+          <div className="flex flex-wrap  justify-center   ">
+            <div className=" rounded-none mb-4   border-slate-500  ">
+              <motion.div
+                initial={{ opacity: 0, y: 400, scale: 1.5 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.2,
+                  // easein: [0, 0.71, 0.5, 1.01]
+                }}
+                className=" py-8 rounded-lg backdrop-blur-sm bg-white/30 text-[#000000c8]  ">
+                <div className="flex justify-between">
+                  <Typography
+                    className="pb-8  pl-8 text-lg font-pop font-extrabold tracking-wide capitalize "
+                    color="purple">
+                    {todo.title}
+                  </Typography>
 
-                    <Stack className="">
-                      <div>
-                        <Tooltip
-                          TransitionComponent={Fade}
-                          TransitionProps={{ timeout: 600 }}
-                          title="Complete"
-                          arrow
-                          placement="bottom-start">
-                          <motion.button
-                            whileHover={{ scale: 1.2 }}
-                            className=" mr-4   text-green-600 "
-                            onClick={(e) => handleComplete(todo._id)}>
-                            <Check />{" "}
-                          </motion.button>{" "}
-                        </Tooltip>
-                        <Tooltip
-                          TransitionComponent={Fade}
-                          TransitionProps={{ timeout: 600 }}
-                          title="Delete"
-                          arrow
-                          placement="bottom-start">
-                          <motion.button
-                            whileHover={{ scale: 1.2 }}
-                            className=" mr-6 px-1  text-red-600  "
-                            onClick={(e) => handleDelete(todo._id)}>
-                            <X />
-                          </motion.button>{" "}
-                        </Tooltip>
-                      </div>
-                    </Stack>
-                  </div>
-                  <p className="pb-8 pl-8  text-md font-pop w-[450px] text-left">
-                    {todo.task}
-                  </p>
-                  <div className="flex justify-between pr-8">
-                    <h6 className="pl-8 pt-2  text-xs font-pop">{getDate()}</h6>
-                    <Tooltip
-                      TransitionComponent={Fade}
-                      TransitionProps={{ timeout: 600 }}
-                      title="Update"
-                      arrow
-                      placement="bottom-start">
-                      <IconButton color="purple">
+                  <Stack className="">
+                    <div>
+                      <Tooltip
+                        TransitionComponent={Fade}
+                        TransitionProps={{ timeout: 600 }}
+                        title="Complete"
+                        arrow
+                        placement="bottom-start">
+                        <motion.button
+                          whileHover={{ scale: 1.2 }}
+                          className=" mr-4   text-green-600 "
+                          onClick={(e) => handleComplete(todo._id)}>
+                          <Check />{" "}
+                        </motion.button>{" "}
+                      </Tooltip>
+                      <Tooltip
+                        TransitionComponent={Fade}
+                        TransitionProps={{ timeout: 600 }}
+                        title="Delete"
+                        arrow
+                        placement="bottom-start">
+                        <motion.button
+                          whileHover={{ scale: 1.2 }}
+                          className=" mr-6 px-1  text-red-600  "
+                          onClick={(e) => handleDelete(todo._id)}>
+                          <X />
+                        </motion.button>{" "}
+                      </Tooltip>
+                    </div>
+                  </Stack>
+                </div>
+                <p className="pb-8 pl-8  text-md font-pop w-[450px] text-left">
+                  {todo.task}
+                </p>
+                <div className="flex justify-between pr-8">
+                  <h6 className="pl-8 pt-2  text-xs font-pop">{getDate()}</h6>
+                  <Tooltip
+                    TransitionComponent={Fade}
+                    TransitionProps={{ timeout: 600 }}
+                    title="Update"
+                    arrow
+                    placement="bottom-start">
+                    <IconButton color="purple">
+                      {" "}
+                      <Link to={`/Modify/${todo._id}`}>
                         {" "}
-                        <Link to={`/Modify/${todo._id}`}>
-                          {" "}
-                          <ClipboardEdit />{" "}
-                        </Link>{" "}
-                      </IconButton>
-                    </Tooltip>
-                  </div>
-                </motion.div>
-              </div>
+                        <ClipboardEdit />{" "}
+                      </Link>{" "}
+                    </IconButton>
+                  </Tooltip>
+                </div>
+              </motion.div>
             </div>
-          ))}
+          </div>
+        ))}
         <Snackbar open={complete} autoHideDuration={1000} onClose={handleClose}>
           <Alert
             onClose={handleClose}
